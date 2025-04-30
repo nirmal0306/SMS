@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS</title>
+  <link rel="stylesheet" href="residents-list.component.css">
+</head>
+<body>
+  <nav class="navbar">
+    <img src="assets/images/logo.jpg" alt="logo" class="logo">
+
+    <h2 class="sms">Society Management System</h2>
+
+    <ul class="nav-links">
+      <li><a routerLink="/admin-home" class="home-button">Home</a></li>
+      <li><a routerLink="/admin-about" class="home-button">About</a></li>
+      
+      <!-- Dropdown for Resident -->
+      <li class="dropdown">
+        <a class="home-button dropdown-toggle" id="residentDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Resident
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="residentDropdown">
+          <li><a class="dropdown-item" routerLink="/add-resident">Add Resident</a></li>
+          <li><a class="dropdown-item" routerLink="/list-residents">List Residents</a></li>
+        </ul>
+      </li>
+
+      <!-- Dropdown for Visitor -->
+      <li class="dropdown">
+        <a class="home-button dropdown-toggle" id="visitorDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Visitor
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="visitorDropdown">
+          <li><a class="dropdown-item" routerLink="/add-visitor">Add Visitor</a></li>
+          <li><a class="dropdown-item" routerLink="/list-visitor">List Visitor</a></li>
+        </ul>
+      </li>
+      
+      <!-- Dropdown for Additional Features -->
+      <li class="dropdown">
+        <a class="home-button dropdown-toggle" id="featuresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Features
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="featuresDropdown">
+          <li><a class="dropdown-item" routerLink="/parking-slot">Parking Slot</a></li>
+          <li><a class="dropdown-item" routerLink="/reports">Reports</a></li>
+          <li><a class="dropdown-item" routerLink="/list-notice">Notice</a></li>
+          <li><a class="dropdown-item" routerLink="/events">Events</a></li>
+          <li><a class="dropdown-item" routerLink="/maintenance">Maintenance</a></li>
+          <li><a class="dropdown-item" routerLink="/chatbot">ChatBot</a></li>
+          <li><a class="dropdown-item" routerLink="/list-feedback">Feedback</a></li>
+          <li><a class="dropdown-item" routerLink="/list-complaint">Complaints</a></li>
+        </ul>
+      </li>
+      
+      <li><a (click)="logout()">Logout</a></li>
+    </ul>
+  </nav>
+      <br>
+<!-- Display Resident List with Images -->
+<h2 *ngIf="!selectedResident" style="margin-top: 70px; color: white; text-align: center;">List of Residents</h2>
+<br>
+<!-- Show Residents List when no resident is selected for editing -->
+<div *ngIf="!selectedResident">
+  <table class="maintenance-table">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Apartment</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let resident of residents">
+      <td>{{ resident.name }}</td>
+      <td>{{ resident.email }}</td>
+      <td>{{ resident.phone }}</td>
+      <td>{{ resident.apartment }}</td>
+      <td><img [src]="'http://localhost:5000' + resident.image" width="50" height="50" alt="Resident Image"></td>
+      <td>
+        <button (click)="editResident(resident)">Edit</button>
+        <button style="margin-left:5px" (click)="deleteResident(resident._id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- Show Edit Component when a resident is selected -->
+    <h2 *ngIf="selectedResident" style="margin-top: 50px; color: white; text-align: center;">Edit Resident</h2>
+    <br>
+<app-edit-resident 
+  *ngIf="selectedResident" 
+  [resident]="selectedResident" 
+  (updateSuccess)="onUpdateSuccess()" 
+  (cancelEdit)="cancelEdit()">
+</app-edit-resident>
+
+
+</body>
+</html>

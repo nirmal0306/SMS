@@ -1,0 +1,106 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap');
+
+/* Apply a modern background */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the main container */
+.container {
+    max-width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Header styling */
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Table headers */
+th {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    background: #34495e;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Table rows */
+td {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Table hover effect */
+tr:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Image styling */
+img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+/* Buttons */
+button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    background: #3498db;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+/* Navbar */
+.navbar {
+    background: #2c3e50;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}

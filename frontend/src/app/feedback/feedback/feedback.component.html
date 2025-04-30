@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS</title>
+  <link rel="stylesheet" href="feedback.component.css">
+</head>
+<body>
+<div class="profile-container">
+    <nav class="navbar">
+        <img src="assets/images/logo.jpg" alt="logo" class="logo" />
+        <h2 class="sms">Society Management System</h2>
+      <ul class="nav-links">
+        <li><a routerLink="/visitor-home" class="home-button">Home</a></li>
+        <li><a routerLink="/visitor-about" class="home-button">About</a></li>
+        <li><a routerLink="/feedback" class="home-button">Feedback</a></li>
+        <li *ngIf="name">
+          <a routerLink="/visitor-detail" class="home-button">Hi, {{ name }}</a>
+        </li>
+        <li><a routerLink="/visitor-login" (click)="logout()">Logout</a></li>
+      </ul>
+    </nav>
+    <div class="notice-container">
+      <h2>Visitor Feedback</h2>
+        <form (ngSubmit)="onSubmit()">
+      
+          <div class="input-group">
+            <label for="residentName">Visitor Name</label>
+            <input [(ngModel)]="form.name" name="name" placeholder="Name" readonly />
+          </div>
+          <div class="input-group">
+            <label for="residentName">Email</label>
+            <input [(ngModel)]="form.email" name="email" placeholder="Email" readonly />
+          </div>
+          <div class="input-group">
+            <label for="residentName">Feedback</label>
+            <textarea [(ngModel)]="form.message" name="message" placeholder="Message" required></textarea>
+          </div>
+  <button type="submit">Submit</button>
+</form>

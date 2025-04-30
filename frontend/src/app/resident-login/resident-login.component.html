@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Login</title>
+     <link rel="stylesheet" href="resident-login.component.css">
+ </head>
+ <body>
+     <nav class="navbar">
+       <img src="assets/images/logo.jpg" alt="logo" class="logo" >
+ 
+       <h2 class="sms">Society Management System</h2>
+ 
+       <ul class="nav-links">
+         <li><a routerLink="" class="home-button">Home</a></li>
+         <li><a routerLink="/about" class="home-button">About</a></li>
+         <li class="dropdown">
+          <a class="home-button dropdown-toggle" id="residentDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Login
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="residentDropdown">
+            <li><a class="dropdown-item" routerLink="/resident-login">Resident Login</a></li>
+            <li><a class="dropdown-item" routerLink="/visitor-login">Visitor Login</a></li>
+            <li><a class="dropdown-item" routerLink="/admin-login">Admin Login</a></li>
+          </ul>
+        </li>
+         <li><a routerLink="/register" class="home-button">SignUp</a></li>
+         <!-- <li><a routerLink="/admin" class="home-button">Admin</a></li> -->
+       </ul>
+     </nav>
+     <div class="form-container"> 
+         <div class="login-form">
+          <h2>Resident Login</h2>
+          <form (ngSubmit)="onLogin()">
+            <div>
+              <label for="email" style="color:black">Email</label>
+              <input type="email" id="email" [(ngModel)]="userData.email" name="email" placeholder="email" required />
+            </div>
+            <div>
+              <label for="password" style="color:black">Password</label>
+              <input type="password" id="password" [(ngModel)]="userData.password" name="password" placeholder="password" required />
+            </div>
+            <button type="submit">Login</button>
+          </form>
+        </div>
+        
+         <p style="color:black">Don't have an account? <a routerLink="/register" class="home-button">Register here</a></p>
+     </div>
+ </body>
+ </html>
+  

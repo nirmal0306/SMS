@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS</title>
+  <link rel="stylesheet" href="user-profile.component.css">
+</head>
+<body>
+<div class="profile-container">
+    <nav class="navbar">
+        <img src="assets/images/logo.jpg" alt="logo" class="logo" />
+        <h2 class="sms">Society Management System</h2>
+      <ul class="nav-links">
+        <li><a routerLink="/after-login" class="home-button">Home</a></li>
+        <li><a routerLink="/after-about" class="home-button">About</a></li>
+        <li class="dropdown">
+          <a class="home-button dropdown-toggle">Features</a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/book-parking">Book Parking</a></li>
+            <li><a routerLink="/add-maintenance">Pay Maintenance</a></li>
+            <li><a routerLink="/complaint">Complaint</a></li>
+            <li><a routerLink="/notice">Notice</a></li>
+            <li><a routerLink="/events-list">Events</a></li>
+          </ul>
+        </li>
+        <li *ngIf="name">
+          <a routerLink="/resident-detail" class="home-button">Hi, {{ name }}</a>
+        </li>
+        <li><a routerLink="/resident-login" (click)="logout()">Logout</a></li>
+      </ul>
+    </nav>
+    <div class="notice-container">
+    <div class="profile-card">
+      <img
+        *ngIf="image"
+        [src]="'http://localhost:5000' + image"
+        class="profile-image"
+        alt="Resident Image"
+      />
+  
+      <div class="info">
+        <h2>{{ name }}</h2>
+        <p><strong>Email:</strong> {{ email }}</p>
+        <p><strong>Phone:</strong> {{ phone }}</p>
+        <p><strong>Apartment:</strong> {{ apartment }}</p>
+      </div>
+    </div>
+    </div>
+  </div>
+  
+  <router-outlet></router-outlet>
+  

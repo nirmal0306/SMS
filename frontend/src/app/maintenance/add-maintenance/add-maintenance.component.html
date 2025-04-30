@@ -1,0 +1,265 @@
+<!--DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS - Add Maintenance Payment</title>
+  <link rel="stylesheet" href="add-maintenance.component.css">
+</head>
+<body>
+  <div class="main-content">
+    <nav class="navbar">
+      <img src="assets/images/logo.jpg" alt="logo" class="logo">
+      <h2 class="sms">Society Management System</h2>
+      <ul class="nav-links">
+        <li><a routerLink="/after-login" class="home-button">Home</a></li>
+        <li><a routerLink="/after-about" class="home-button">About</a></li>
+        <li class="dropdown">
+          <a class="home-button dropdown-toggle">Features</a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/book-parking">Book Parking</a></li>
+            <li><a routerLink="/add-maintenance">Pay Maintenance</a></li>
+            <li><a routerLink="/complaint">Complaint</a></li>
+            <li><a routerLink="/notice">Notice</a></li>
+          </ul>
+        </li>
+        <li *ngIf="name"><a routerLink="/resident-detail" class="home-button">Hi, {{ name }}</a></li>
+        <li><a (click)="logout()">Logout</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <h2>Maintenance Payment</h2>
+      <form (ngSubmit)="payMaintenance()">
+        <div class="input-group">
+          <label for="residentName">Resident Name</label>
+          <input type="text" [(ngModel)]="residentName" name="residentName" placeholder="Resident Name" readonly required />
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" [(ngModel)]="email" name="email" placeholder="Resident Email" readonly required />
+        </div>
+
+        <div class="input-group">
+          <label for="apartment">Apartment</label>
+          <input type="text" [(ngModel)]="apartment" name="apartment" placeholder="Apartment" readonly required />
+        </div>
+
+        <div class="input-group">
+          <label for="amount">Amount</label>
+          <input type="number" [(ngModel)]="amount" name="amount" placeholder="Enter Amount" value="5000" readonly required />
+        </div>
+
+        <div class="input-group">
+          <label for="month">Month</label>
+          <select [(ngModel)]="month" name="month" required (change)="checkPaymentStatus()">
+            <option value="" disabled selected>Select Month</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+        </div>
+
+        <button type="submit" [disabled]="isPaymentDisabled">Pay Now</button>
+        <p *ngIf="isPaymentDisabled" class="error-message">
+          Maintenance already paid for selected month.
+        </p>
+        
+        
+      </form>
+    <p *ngIf="paymentStatus" class="status-message">{{ paymentStatus }}</p>
+  </div>
+</div>
+</body>
+</html-->
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS - Add Maintenance Payment</title>
+  <link rel="stylesheet" href="add-maintenance.component.css">
+</head>
+<body>
+  <div class="main-content">
+    <nav class="navbar">
+      <img src="assets/images/logo.jpg" alt="logo" class="logo">
+      <h2 class="sms">Society Management System</h2>
+      <ul class="nav-links">
+        <li><a routerLink="/after-login" class="home-button">Home</a></li>
+        <li><a routerLink="/after-about" class="home-button">About</a></li>
+        <li class="dropdown">
+          <a class="home-button dropdown-toggle">Features</a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/book-parking">Book Parking</a></li>
+            <li><a routerLink="/add-maintenance">Pay Maintenance</a></li>
+            <li><a routerLink="/complaint">Complaint</a></li>
+            <li><a routerLink="/notice">Notice</a></li>
+          </ul>
+        </li>
+        <li *ngIf="name"><a routerLink="/resident-detail" class="home-button">Hi, {{ name }}</a></li>
+        <li><a (click)="logout()">Logout</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <h2>Maintenance Payment</h2>
+      <form (ngSubmit)="payMaintenance()">
+        <div class="input-group">
+          <label for="residentName">Resident Name</label>
+          <input type="text" [(ngModel)]="residentName" name="residentName" placeholder="Resident Name" readonly required />
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" [(ngModel)]="email" name="email" placeholder="Resident Email" readonly required />
+        </div>
+
+        <div class="input-group">
+          <label for="apartment">Apartment</label>
+          <input type="text" [(ngModel)]="apartment" name="apartment" placeholder="Apartment" readonly required />
+        </div>
+
+        <div class="input-group">
+          <label for="payWholeYear">Pay for Whole Year</label>
+          <input type="checkbox" [(ngModel)]="payWholeYear" name="payWholeYear" (change)="updateAmount()" />
+        </div>
+
+        <div class="input-group" *ngIf="!payWholeYear">
+          <label for="month">Month</label>
+          <select [(ngModel)]="month" name="month" required (change)="checkPaymentStatus()">
+            <option value="" disabled selected>Select Month</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="amount">Amount</label>
+          <input type="number" [(ngModel)]="amount" name="amount" placeholder="Enter Amount" readonly required />
+        </div>
+
+        <button type="submit" [disabled]="isPaymentDisabled">Pay Now</button>
+        <p *ngIf="isPaymentDisabled" class="error-message">
+          Maintenance already paid for selected month.
+        </p>
+      </form>
+      <p *ngIf="paymentStatus" class="status-message">{{ paymentStatus }}</p>
+    </div>
+  </div>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS - Add Maintenance Payment</title>
+  <link rel="stylesheet" href="add-maintenance.component.css">
+</head>
+<body>
+  <div class="main-content">
+    <nav class="navbar">
+      <img src="assets/images/logo.jpg" alt="logo" class="logo">
+      <h2 class="sms">Society Management System</h2>
+      <ul class="nav-links">
+        <li><a routerLink="/after-login" class="home-button">Home</a></li>
+        <li><a routerLink="/after-about" class="home-button">About</a></li>
+        <li class="dropdown">
+          <a class="home-button dropdown-toggle">Features</a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/book-parking">Book Parking</a></li>
+            <li><a routerLink="/add-maintenance">Pay Maintenance</a></li>
+            <li><a routerLink="/complaint">Complaint</a></li>
+            <li><a routerLink="/notice">Notice</a></li>
+            <li><a routerLink="/events-list">Events</a></li>
+          </ul>
+        </li>
+        <li *ngIf="name"><a routerLink="/resident-detail" class="home-button">Hi, {{ name }}</a></li>
+        <li><a (click)="logout()">Logout</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <h2>Maintenance Payment</h2>
+      <form (ngSubmit)="payMaintenance()">
+        <div class="input-group">
+          <label for="residentName">Resident Name</label>
+          <input type="text" [(ngModel)]="residentName" name="residentName" placeholder="Resident Name" readonly required />
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" [(ngModel)]="email" name="email" placeholder="Resident Email" readonly required />
+        </div>
+
+        <div class="input-group">
+          <label for="apartment">Apartment</label>
+          <input type="text" [(ngModel)]="apartment" name="apartment" placeholder="Apartment" readonly required />
+        </div>
+
+        
+        <div class="input-group">
+          <div class="checkbox-container">
+          <input type="checkbox" [(ngModel)]="payWholeYear" name="payWholeYear" (change)="updateAmount()" />
+          <label for="payWholeYear"><b>Pay for Whole Year</b></label>
+        </div>
+        </div>
+
+        <div class="input-group" *ngIf="!payWholeYear">
+          <label for="month">Month</label>
+          <select [(ngModel)]="month" name="month" required (change)="checkPaymentStatus()">
+            <option value="" disabled selected>Select Month</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="amount">Amount</label>
+          <input type="number" [(ngModel)]="amount" name="amount" placeholder="Enter Amount" readonly required />
+        </div>
+
+        <button type="submit" [disabled]="isPaymentDisabled">Pay Now</button>
+        <p *ngIf="isPaymentDisabled && !payWholeYear && !paymentStatus" class="error-message">
+          Maintenance already paid for selected month.
+        </p>
+      </form>
+      <p *ngIf="paymentStatus" class="status-message">{{ paymentStatus }}</p>
+    </div>
+  </div>
+</body>
+</html>

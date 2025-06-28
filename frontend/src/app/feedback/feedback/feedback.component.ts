@@ -81,32 +81,3 @@ export class FeedbackComponent {
     window.location.href = '/visitor-login'; // Redirect to login
   }
 }
-
-// export class AddComplaintComponent {
-
-//     apartment: string | null = '';
-//     form = { residentName: '', apartmentNumber: '', complaint: '' };
-//     responseMsg = '';
-  
-//     
-    
-  
-    
-  
-  
-
-  
-
-//   onSubmit() {
-//     this.api.submitComplaint(this.form).subscribe({
-//       next: () => {
-//         this.responseMsg = 'Complaint submitted!';
-//         this.form = { residentName: this.form.residentName, apartmentNumber: this.form.apartmentNumber, complaint: '' };
-//         alert("Complaint Submitted")
-//       },
-//       error: () => {
-//         this.responseMsg = 'Submission failed.';
-//       },
-//     });
-//   }
-  

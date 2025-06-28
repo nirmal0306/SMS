@@ -45,6 +45,10 @@ export class ChatbotComponent {
         this.fetchResidentDetails(email);
         this.isBotTyping = false; // Hide typing indicator
       }, this.responseDelay);
+      setTimeout(() => {
+        this.fetchTotalMaintenance(email);
+        this.isBotTyping = false; // Hide typing indicator
+      }, this.responseDelay);
       this.userMessage = '';
       this.expectingEmail = false;
       return;

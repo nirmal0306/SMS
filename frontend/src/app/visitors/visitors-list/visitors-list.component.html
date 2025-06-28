@@ -52,6 +52,7 @@
           <li><a class="dropdown-item" routerLink="/chatbot">ChatBot</a></li>
           <li><a class="dropdown-item" routerLink="/list-feedback">Feedback</a></li>
           <li><a class="dropdown-item" routerLink="/list-complaint">Complaints</a></li>
+          <li><a class="dropdown-item" routerLink="/purpose-list">Visitor-purpose</a></li>
         </ul>
       </li>
       
@@ -77,8 +78,16 @@
       <td>{{ visitor.phone }}</td>
       <td><img [src]="'http://localhost:5000' + visitor.image" width="50" height="50" alt="Visitor Image"></td>
       <td>
-        <button (click)="editVisitor(visitor)">Edit</button>
-        <button style="margin-left:5px" (click)="deleteVisitor(visitor._id)">Delete</button>
+        <button style="margin-left:5px;background-color:yellow;" (click)="editVisitor(visitor)">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 24 24">
+            <path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="2" d="M18.4,3.1L4,17.4V20h2.6L20.9,5.6V5.5L18.4,3.1L18.4,3.1z"></path><path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="2" d="M15.5,5.5l3,3"></path>
+            </svg>
+        </button>
+        <button style="margin-left:5px;background-color:red;" (click)="deleteVisitor(visitor._id)">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 30 30">
+            <path d="M 14.984375 2.4863281 A 1.0001 1.0001 0 0 0 14 3.5 L 14 4 L 8.5 4 A 1.0001 1.0001 0 0 0 7.4863281 5 L 6 5 A 1.0001 1.0001 0 1 0 6 7 L 24 7 A 1.0001 1.0001 0 1 0 24 5 L 22.513672 5 A 1.0001 1.0001 0 0 0 21.5 4 L 16 4 L 16 3.5 A 1.0001 1.0001 0 0 0 14.984375 2.4863281 z M 6 9 L 7.7929688 24.234375 C 7.9109687 25.241375 8.7633438 26 9.7773438 26 L 20.222656 26 C 21.236656 26 22.088031 25.241375 22.207031 24.234375 L 24 9 L 6 9 z"></path>
+          </svg>
+          </button>
       </td>
     </tr>
   </table>

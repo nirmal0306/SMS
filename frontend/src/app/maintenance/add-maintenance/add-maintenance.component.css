@@ -768,4 +768,159 @@ img {
       cursor: pointer;
     }
     
-    
+    input[disabled], select[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status-message {
+  font-weight: bold;
+  color: green;
+}
+
+.error-message {
+  color: red;
+}
+.date-time {
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Existing styles */
+input[disabled], select[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.status-message {
+  font-weight: bold;
+  color: green;
+}
+.error-message {
+  color: red;
+}
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.date-time {
+  font-size: 18px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+input, select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+input[readonly] {
+  background-color: #f9f9f9;
+}
+
+input[disabled], select[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.payment-method-details {
+  margin-top: 10px;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button[type="submit"] {
+  background-color: #3399cc;
+  color: white;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background-color: #287aa3;
+  transform: translateY(-2px);
+}
+
+button[type="button"] {
+  background-color: #e74c3c;
+  color: white;
+}
+
+button[type="button"]:hover:not(:disabled) {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+button[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.status-message {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+  color: green;
+}

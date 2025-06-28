@@ -15,7 +15,13 @@
         <ul class="nav-links">
             <li><a routerLink="/visitor-home" class="home-button">Home</a></li>
             <li><a routerLink="/visitor-about" class="home-button">About</a></li>
-            <li><a routerLink="/feedback" class="home-button">Feedback</a></li>
+            <li class="dropdown">
+                <a class="home-button dropdown-toggle">Features</a>
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/purpose">Purpose</a></li>
+                  <li><a routerLink="/feedback" class="home-button">Feedback</a></li>
+                </ul>
+              </li>
             <li *ngIf="name">
                 <a routerLink="/visitor-detail" class="home-button">Hi, {{ name }}</a>
               </li>

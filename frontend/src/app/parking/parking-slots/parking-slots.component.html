@@ -52,6 +52,7 @@
           <li><a class="dropdown-item" routerLink="/chatbot">ChatBot</a></li>
           <li><a class="dropdown-item" routerLink="/list-feedback">Feedback</a></li>
           <li><a class="dropdown-item" routerLink="/list-complaint">Complaints</a></li>
+          <li><a class="dropdown-item" routerLink="/purpose-list">Visitor-purpose</a></li>
         </ul>
       </li>
       
@@ -76,7 +77,7 @@
           <td>{{ request.email }}</td>
           <td>
             <button class="save-btn" (click)="approveRequest(request._id)">✅ Approve</button>
-            <button class="cancel-btn" (click)="rejectRequest(request._id)">❌ Reject</button>
+            <button class="cancel-btn" (click)="rejectRequest(request._id)">✖ Reject</button>
           </td>
         </tr>
       </tbody>

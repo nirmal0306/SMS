@@ -32,10 +32,13 @@ export class AddComplaintComponent {
           },
           (error) => {
             console.error('Failed to fetch resident details:', error);
+            alert('Failed to fetch resident details');
+            this.router.navigate(['/resident-login']);
           }
         );
       }
     }
+    
 
     getUserData() {
       const token = sessionStorage.getItem("token"); 

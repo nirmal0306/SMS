@@ -169,8 +169,9 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors');
+const path = require("path");
 const bodyParser = require('body-parser');
-
+const visitorPurposeRoutes = require('./routes/visitorPurposeRoutes');
 const authRoutes = require('./routes/authRoutes');
 const residentRoutes = require('./routes/residentRoutes');
 const visitorRoutes = require('./routes/visitorRoutes')
@@ -194,8 +195,9 @@ connectDB();
 app.use('', authRoutes);
 app.use("/residents", residentRoutes);
 app.use("/visitors", visitorRoutes);
+app.use('/visitor-purpose', visitorPurposeRoutes);
 app.use('/maintenance', maintenanceRoutes);
-app.use("/uploads", express.static("uploads")); // Serve images statically
+app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve images statically
 app.use('/notices', noticeRoutes);
 app.use('/events', eventRoutes);
 app.use('/feedback', feedbackRoutes);

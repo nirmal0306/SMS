@@ -27,12 +27,19 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/face-api.js/models",
+                "output": "/assets/models/"
+              }
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/opencv/opencv.js"
+            ]
           },
           "configurations": {
             "production": {

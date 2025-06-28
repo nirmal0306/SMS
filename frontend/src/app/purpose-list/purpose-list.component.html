@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS</title>
+  <link rel="stylesheet" href="purpose-list.component.css">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="assets/images/logo.jpg" alt="logo" class="logo">
+    
+        <h2 class="sms">Society Management System</h2>
+    
+        <ul class="nav-links">
+          <li><a routerLink="/admin-home" class="home-button">Home</a></li>
+          <li><a routerLink="/admin-about" class="home-button">About</a></li>
+          
+          <!-- Dropdown for Resident -->
+          <li class="dropdown">
+            <a class="home-button dropdown-toggle" id="residentDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resident
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="residentDropdown">
+              <li><a class="dropdown-item" routerLink="/add-resident">Add Resident</a></li>
+              <li><a class="dropdown-item" routerLink="/list-residents">List Residents</a></li>
+            </ul>
+          </li>
+
+          <!-- Dropdown for Visitor -->
+          <li class="dropdown">
+            <a class="home-button dropdown-toggle" id="visitorDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Visitor
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="visitorDropdown">
+              <li><a class="dropdown-item" routerLink="/add-visitor">Add Visitor</a></li>
+              <li><a class="dropdown-item" routerLink="/list-visitor">List Visitor</a></li>
+            </ul>
+          </li>
+          
+          <!-- Dropdown for Additional Features -->
+          <li class="dropdown">
+            <a class="home-button dropdown-toggle" id="featuresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Features
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="featuresDropdown">
+              <li><a class="dropdown-item" routerLink="/parking-slot">Parking Slot</a></li>
+              <li><a class="dropdown-item" routerLink="/reports">Reports</a></li>
+              <li><a class="dropdown-item" routerLink="/list-notice">Notice</a></li>
+              <li><a class="dropdown-item" routerLink="/events">Events</a></li>
+              <li><a class="dropdown-item" routerLink="/maintenance">Maintenance</a></li>
+              <li><a class="dropdown-item" routerLink="/chatbot">ChatBot</a></li>
+              <li><a class="dropdown-item" routerLink="/list-feedback">Feedback</a></li>
+              <li><a class="dropdown-item" routerLink="/list-complaint">Complaints</a></li>
+              <li><a class="dropdown-item" routerLink="/purpose-list">Visitor-purpose</a></li>
+            </ul>
+          </li>
+          
+          <li><a (click)="logout()">Logout</a></li>
+        </ul>
+      </nav>
+      <div class="complaints-container">
+        <div class="feedback-container">
+            <div class="purpose-container">
+                <h2>Visitor Purpose List</h2>
+              
+                <table *ngIf="purposeList.length > 0" class="purpose-table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Visitor Name</th>
+                      <th>Block</th>
+                      <th>Flat No</th>
+                      <th>Purpose</th>
+                      <th>Date & Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of purposeList; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.block }}</td>
+                      <td>{{ item.flatNo }}</td>
+                      <td>{{ item.purpose }}</td>
+                      <td>{{ item.timestamp | date:'medium' }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              
+                <p *ngIf="purposeList.length === 0">No visitor purposes submitted yet.</p>
+              </div>
+              
+          </div>
+        </div>
+          

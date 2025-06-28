@@ -52,6 +52,7 @@
           <li><a class="dropdown-item" routerLink="/chatbot">ChatBot</a></li>
           <li><a class="dropdown-item" routerLink="/list-feedback">Feedback</a></li>
           <li><a class="dropdown-item" routerLink="/list-complaint">Complaints</a></li>
+          <li><a class="dropdown-item" routerLink="/purpose-list">Visitor-purpose</a></li>
         </ul>
       </li>
       
@@ -76,10 +77,16 @@
         <input type="text" id="phone" [(ngModel)]="visitor.phone" name="phone" required />
       </div>
   
-      <div class="form-group">
+      <!--div class="form-group">
         <label for="file">Profile Image:</label>
         <input type="file" id="file" (change)="onFileSelected($event)" />
-      </div>
+      </div-->
+      <video #video width="320" height="240" autoplay style="transform: scaleX(-1);"></video>
+<canvas #canvas width="320" height="240" hidden style="transform: scaleX(-1);"></canvas>
+
+  <br>
+  <button type="button" (click)="capture()">Capture Photo</button>
+  <p *ngIf="selectedFile">📸 Image ready to upload!</p>
   
       <div class="button-group">
         <button type="submit" class="save-btn">Save Changes</button>

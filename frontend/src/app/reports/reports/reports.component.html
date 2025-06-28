@@ -52,6 +52,7 @@
           <li><a class="dropdown-item" routerLink="/chatbot">ChatBot</a></li>
           <li><a class="dropdown-item" routerLink="/list-feedback">Feedback</a></li>
           <li><a class="dropdown-item" routerLink="/list-complaint">Complaints</a></li>
+          <li><a class="dropdown-item" routerLink="/purpose-list">Visitor-purpose</a></li>
         </ul>
       </li>
       
@@ -60,8 +61,7 @@
   </nav>
   <div>
     <br>
-    <button (click)="exportToExcel()" class="save-btn">Download Excel</button>
-    <h2 class="h2">Report of Maintenance Payments</h2>
+    <h2 class="h2" style="margin-top:70px;">Report of Maintenance Payments</h2>
     <br>
     
     
@@ -92,5 +92,6 @@
         </tr>
       </tbody>
     </table>
+    <button (click)="exportToExcel()" style="margin-left:350px;margin-top:20px;width:150px;background-color:green;" class="save-btn">Download Excel</button>
   </div>
   

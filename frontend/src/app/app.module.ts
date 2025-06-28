@@ -60,7 +60,9 @@ import { VisitorProfileComponent } from './profile/visitor-profile/visitor-profi
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { AcceptedRequestsComponent } from './accepted-requests/accepted-requests.component';
 import { RejectedRequestsComponent } from './rejected-requests/rejected-requests.component';
-import { ResidentEventsComponent } from './events/resident-events/resident-events.component'
+import { ResidentEventsComponent } from './events/resident-events/resident-events.component';
+import { VisitorPurposeComponent } from './visitor-purpose/visitor-purpose.component';
+import { PurposeListComponent } from './purpose-list/purpose-list.component'
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -136,6 +138,8 @@ const routes: Routes = [
     AcceptedRequestsComponent,
     RejectedRequestsComponent,
     ResidentEventsComponent,
+    VisitorPurposeComponent,
+    PurposeListComponent,
     
   ],
   imports: [

@@ -45,6 +45,8 @@ import { AcceptedRequestsComponent } from './accepted-requests/accepted-requests
 import { RejectedRequestsComponent } from './rejected-requests/rejected-requests.component';
 import { ReportsComponent } from './reports/reports/reports.component';
 import { ResidentEventsComponent } from './events/resident-events/resident-events.component';
+import { VisitorPurposeComponent } from './visitor-purpose/visitor-purpose.component';
+import { PurposeListComponent } from './purpose-list/purpose-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, // Default route (Home Page)
@@ -93,6 +95,8 @@ const routes: Routes = [
   { path: 'accepted-requests', component: AcceptedRequestsComponent },
   { path: 'rejected-requests', component: RejectedRequestsComponent },
   { path: 'reports', component: ReportsComponent },
+  { path: 'purpose', component: VisitorPurposeComponent },
+  { path: 'purpose-list', component: PurposeListComponent },
 
 
 

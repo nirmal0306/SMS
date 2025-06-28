@@ -1,108 +1,99 @@
-// import { Component, OnInit } from '@angular/core';
+// import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 // import { HttpClient } from '@angular/common/http';
+// import { Router } from '@angular/router';
 
 // @Component({
 //   selector: 'app-add-resident',
 //   templateUrl: './add-resident.component.html',
 //   styleUrls: ['./add-resident.component.css']
 // })
-// export class AddResidentComponent implements OnInit {
+// export class AddResidentComponent {
+//   @ViewChild('video') video!: ElementRef;
+//   @ViewChild('canvas') canvas!: ElementRef;
 
+//   capturedBlob!: Blob;
 //   apiUrl = 'http://localhost:5000/residents';
-//   residents: any[] = [];
-//   newResident = { name: '', email: '', phone: '', apartment: '', image: '' };
-//   selectedResident: any = null;
+//   blocks: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+//   flatNos: number[] = [];
+  
+
+//   newResident = { name: '', email: '', phone: '',block: '',flatNo: '', apartment: '', password: '',image: '' };
+//   selectedFile1: File | null = null;
+
+  
+//   constructor(private http: HttpClient, private router: Router) {
+//     for (let floor = 1; floor <= 5; floor++) {
+//       for (let unit = 1; unit <= 6; unit++) {
+//         this.flatNos.push(floor * 100 + unit);
+//       }
+//     }
+//   }
+//   ngOnInit() {
+//     navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+//       this.video.nativeElement.srcObject = stream;
+//     });
+//   }
+  
+
+//   onFileSelected1(event: any) {
+//     this.selectedFile1 = event.target.files[0];
+//   }
 //   selectedFile: File | null = null;
 
-//   constructor(private http: HttpClient) {}
-
-//   ngOnInit() {
-//     this.fetchResidents();
-//   }
-
-//   fetchResidents() {
-//     this.http.get<any[]>(`${this.apiUrl}/list`).subscribe(
-//       data => this.residents = data,
-//       error => console.error('Error fetching residents:', error)
-//     );
-//   }
-
 //   onFileSelected(event: any) {
-//     this.selectedFile = event.target.files[0];
+//   const file = event.target.files[0];
+//   if (file && (file.type === 'image/jpeg' || file.type === 'image/jpg')) {
+//     this.selectedFile = file;
+//   } else {
+//     alert('Please capture a JPG or JPEG image');
 //   }
+// }
+
 
 //   addResident() {
+//     this.newResident.apartment = `${this.newResident.block}-${this.newResident.flatNo}`;
 //     const formData = new FormData();
 //     formData.append('name', this.newResident.name);
 //     formData.append('email', this.newResident.email);
 //     formData.append('phone', this.newResident.phone);
 //     formData.append('apartment', this.newResident.apartment);
+//     formData.append('password', this.newResident.password);
+
+//     // if (this.selectedFile) {
+//     //   formData.append('image', this.selectedFile);
+//     // }
 //     if (this.selectedFile) {
-//       formData.append('image', this.selectedFile);
+//       formData.append('image', this.selectedFile as Blob);
 //     }
 
 //     this.http.post(`${this.apiUrl}/add`, formData).subscribe(
 //       () => {
-//         this.fetchResidents();
-//         this.newResident = { name: '', email: '', phone: '', apartment: '', image: '' };
+//         alert('Resident added successfully');
+//         this.newResident = {
+//           name: '',
+//           email: '',
+//           phone: '',
+//           block: '',
+//           flatNo: '',
+//           apartment: '',
+//           password: '',
+//           image: ''
+//         };
+        
+//         // this.newResident = { name: '', email: '', phone: '', apartment: '', image: '' };
 //         this.selectedFile = null;
+//         this.router.navigate(['/list-residents'])
 //       },
 //       error => console.error('Error adding resident:', error)
 //     );
 //   }
 
-//   // 📝 Set form data for editing
-//   editResident(resident: any) {
-//     this.selectedResident = resident;
-//     this.newResident = { ...resident };
-//   }
-
-//   // 📝 Update resident details
-//   updateResident() {
-//     const formData = new FormData();
-//     formData.append('name', this.newResident.name);
-//     formData.append('email', this.newResident.email);
-//     formData.append('phone', this.newResident.phone);
-//     formData.append('apartment', this.newResident.apartment);
-
-//     if (this.selectedFile) {
-//       formData.append('image', this.selectedFile);
-//     } else {
-//       formData.append('image', this.newResident.image);
-//     }
-
-//     this.http.put(`${this.apiUrl}/update/${this.selectedResident._id}`, formData).subscribe(
-//       () => {
-//         this.fetchResidents();
-//         this.cancelEdit();
-//       },
-//       error => console.error('Error updating resident:', error)
-//     );
-//   }
-
-//   // 🛑 Cancel editing
-//   cancelEdit() {
-//     this.selectedResident = null;
-//     this.newResident = { name: '', email: '', phone: '', apartment: '', image: '' };
-//     this.selectedFile = null;
-//   }
-
-//   // ❌ Delete resident
-//   deleteResident(id: string) {
-//     this.http.delete(`${this.apiUrl}/delete/${id}`).subscribe(
-//       () => this.fetchResidents(),
-//       error => console.error('Error deleting resident:', error)
-//     );
-//   }
-//     logout(): void {
+//   logout(): void {
 //     localStorage.removeItem('token'); // Remove token from storage
-//     window.location.href = '/login'; // Redirect to login
+//     window.location.href = '/admin-login'; // Redirect to login
 //   }
 // }
-
-
-
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -111,15 +102,28 @@ import { Router } from '@angular/router';
   templateUrl: './add-resident.component.html',
   styleUrls: ['./add-resident.component.css']
 })
-export class AddResidentComponent {
+export class AddResidentComponent implements OnInit {
+  @ViewChild('video') video!: ElementRef;
+  @ViewChild('canvas') canvas!: ElementRef;
+
+  capturedBlob!: Blob;
   apiUrl = 'http://localhost:5000/residents';
   blocks: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
   flatNos: number[] = [];
 
-  newResident = { name: '', email: '', phone: '',block: '',flatNo: '', apartment: '', password: '',image: '' };
+  newResident = {
+    name: '',
+    email: '',
+    phone: '',
+    block: '',
+    flatNo: '',
+    apartment: '',
+    password: '',
+    image: ''
+  };
+
   selectedFile: File | null = null;
 
-  
   constructor(private http: HttpClient, private router: Router) {
     for (let floor = 1; floor <= 5; floor++) {
       for (let unit = 1; unit <= 6; unit++) {
@@ -127,10 +131,32 @@ export class AddResidentComponent {
       }
     }
   }
-  
+
+  ngOnInit() {
+    navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+      this.video.nativeElement.srcObject = stream;
+    }).catch(err => {
+      console.error('Camera access denied:', err);
+    });
+  }
+
+  // 📸 Capture image from video stream
+  capture() {
+    const context = this.canvas.nativeElement.getContext('2d');
+    context.drawImage(this.video.nativeElement, 0, 0, 320, 240);
+    this.canvas.nativeElement.toBlob((blob: Blob) => {
+      this.capturedBlob = blob;
+      this.selectedFile = new File([blob], 'snapshot.jpg', { type: 'image/jpeg' });
+    }, 'image/jpeg');
+  }
 
   onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
+    const file = event.target.files[0];
+    if (file && (file.type === 'image/jpeg' || file.type === 'image/jpg')) {
+      this.selectedFile = file;
+    } else {
+      alert('Please select a JPG or JPEG image');
+    }
   }
 
   addResident() {
@@ -159,17 +185,15 @@ export class AddResidentComponent {
           password: '',
           image: ''
         };
-        
-        // this.newResident = { name: '', email: '', phone: '', apartment: '', image: '' };
         this.selectedFile = null;
-        this.router.navigate(['/list-residents'])
+        this.router.navigate(['/list-residents']);
       },
       error => console.error('Error adding resident:', error)
     );
   }
 
   logout(): void {
-    localStorage.removeItem('token'); // Remove token from storage
-    window.location.href = '/admin-login'; // Redirect to login
+    localStorage.removeItem('token');
+    window.location.href = '/admin-login';
   }
 }

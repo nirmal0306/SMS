@@ -11,6 +11,10 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}/feedback/submit-feedback`, data);
   }
 
+  submitPurpose(data: any) {
+    return this.http.post(`${this.baseUrl}/visitor/visitor-purpose`, data);
+  }
+
   submitComplaint(data: any) {
     return this.http.post(`${this.baseUrl}/complaint/submit-complaint`, data);
   }

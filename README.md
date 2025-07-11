@@ -5,6 +5,11 @@ This application manages society operations including admin controls, resident i
 
 ---
 
+## 👨‍💻 Developed by
+
+**Nirmal Barot**
+
+---
 ## 🚀 Tech Stack
 
 - **Frontend**: Angular 12  
@@ -99,7 +104,7 @@ This application manages society operations including admin controls, resident i
    git clone https://github.com/nirmal0306/SMS.git
    cd SMS
 
-
+---
 # Start Backend
 
 cd backend
@@ -108,6 +113,7 @@ npm install
 
 node server.js
 
+---
 
 # Start Frontend
 
@@ -117,12 +123,17 @@ npm install
 
 npm start
 
+---
+
+
 # ✅ Login Credentials for Testing (if seeded)
 | Role     | Email                                         | Password     |
 | -------- | --------------------------------------------- | ------------ |
 | Admin    | [admin@example.com](mailto:admin@example.com) | admin123     |
 | Resident | [user@example.com](mailto:user@example.com)   | user123      |
 | Visitor  | Any name, email, image                        | (Face match) |
+
+---
 
 # 📸 Visitor Face Login Feature
 Visitor uploads a live photo during login.
@@ -131,4 +142,4 @@ Photo is compared with one stored in the DB.
 
 If matched, visitor is allowed to log in.
 
-
+---

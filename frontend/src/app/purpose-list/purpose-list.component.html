@@ -69,6 +69,7 @@
                     <tr>
                       <th>#</th>
                       <th>Visitor Name</th>
+                      <th>Visitor Email</th>
                       <th>Block</th>
                       <th>Flat No</th>
                       <th>Purpose</th>
@@ -79,6 +80,7 @@
                     <tr *ngFor="let item of purposeList; let i = index">
                       <td>{{ i + 1 }}</td>
                       <td>{{ item.name }}</td>
+                      <td>{{ item.email }}</td>
                       <td>{{ item.block }}</td>
                       <td>{{ item.flatNo }}</td>
                       <td>{{ item.purpose }}</td>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS</title>
+  <link rel="stylesheet" href="reports.component.css">
+</head>
+<body>
+  <nav class="navbar">
+    <img src="assets/images/logo.jpg" alt="logo" class="logo">
+
+    <h2 class="sms">Society Management System</h2>
+
+    <ul class="nav-links">
+      <li><a routerLink="/admin-home" class="home-button">Home</a></li>
+      <li><a routerLink="/admin-about" class="home-button">About</a></li>
+      
+      <!-- Dropdown for Resident -->
+      <li class="dropdown">
+        <a class="home-button dropdown-toggle" id="residentDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Resident
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="residentDropdown">
+          <li><a class="dropdown-item" routerLink="/add-resident">Add Resident</a></li>
+          <li><a class="dropdown-item" routerLink="/list-residents">List Residents</a></li>
+        </ul>
+      </li>
+
+      <!-- Dropdown for Visitor -->
+      <li class="dropdown">
+        <a class="home-button dropdown-toggle" id="visitorDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Visitor
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="visitorDropdown">
+          <li><a class="dropdown-item" routerLink="/add-visitor">Add Visitor</a></li>
+          <li><a class="dropdown-item" routerLink="/list-visitor">List Visitor</a></li>
+        </ul>
+      </li>
+      
+      <!-- Dropdown for Additional Features -->
+      <li class="dropdown">
+        <a class="home-button dropdown-toggle" id="featuresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Features
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="featuresDropdown">
+          <li><a class="dropdown-item" routerLink="/parking-slot">Parking Slot</a></li>
+          <li><a class="dropdown-item" routerLink="/reports">Reports</a></li>
+          <li><a class="dropdown-item" routerLink="/list-notice">Notice</a></li>
+          <li><a class="dropdown-item" routerLink="/events">Events</a></li>
+          <li><a class="dropdown-item" routerLink="/maintenance">Maintenance</a></li>
+          <li><a class="dropdown-item" routerLink="/chatbot">ChatBot</a></li>
+          <li><a class="dropdown-item" routerLink="/list-feedback">Feedback</a></li>
+          <li><a class="dropdown-item" routerLink="/list-complaint">Complaints</a></li>
+          <li><a class="dropdown-item" routerLink="/purpose-list">Visitor-purpose</a></li>
+        </ul>
+      </li>
+      
+      <li><a (click)="logout()">Logout</a></li>
+    </ul>
+  </nav>
+  <div>
+    <br>
+    <h2 class="h2" style="margin-top:70px;">Report of Maintenance Payments</h2>
+    <br>
+    
+    
+    <table class="maintenance-table">
+      <thead>
+        <tr>
+          <th>Resident Name</th>
+          <th>Email</th>
+          <th>Apartment</th>
+          <th>Amount</th>
+          <th>Month</th>
+          <th>Payment Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of payments">
+          <td>{{ payment.residentName }}</td>
+          <td>{{ payment.email }}</td>
+          <td>{{ payment.apartment }}</td>
+          <td>{{ payment.amount }}</td>
+          <td>{{ payment.month }}</td>
+          <td>{{ payment.paymentDate | date:'medium' }}</td>
+  
+          
+        </tr>
+        <tr>
+          <td>Total Maintenance Collected: ₹{{ totalAmount }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="exportToExcel()" style="margin-left:350px;margin-top:20px;width:150px;background-color:green;" class="save-btn">Download Excel</button>
+  </div>
+  

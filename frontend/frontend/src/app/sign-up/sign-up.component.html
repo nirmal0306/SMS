@@ -1,0 +1,97 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="sign-up.component.css">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="images/logo.jpeg" alt="logo" class="logo">
+        <ul class="nav-links">
+          <li><a routerLink="" class="home-button">Home</a></li>
+          <li><a href="#" class="home-button">About</a></li>
+          <li><a routerLink="login" class="home-button">Login</a></li>
+          <li><a routerLink="register" class="home-button">SignUp</a></li>
+        </ul>
+      </nav>
+    <div class="container">
+        <h2>Register</h2>
+        <form action="#" method="POST">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Register</button>
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </form>
+    </div>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="sign-up.component.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <img src="assets/images/logo.jpg" alt="logo" class="logo">
+
+        <h2 style="margin-left: -650px;margin-bottom: -5px;color:'white';">Society Management System</h2>
+
+        <ul class="nav-links">
+          <li><a routerLink="" class="home-button">Home</a></li>
+          <li><a routerLink="/about" class="home-button">About</a></li>
+          <li><a routerLink="/login" class="home-button">Login</a></li>
+          <li><a routerLink="/register" class="home-button">SignUp</a></li>
+        </ul>
+      </nav>
+    <!-- Registration Form -->
+    <div class="container">
+        <h2>Register</h2>
+            <!-- <form (submit)="register()">
+              <label for="fullname">Name</label>
+              <input type="text" placeholder="Name" [(ngModel)]="user.name" id="fullname" name="fullname" required />
+
+              <label for="email">Email</label>
+              <input type="email" placeholder="Email" [(ngModel)]="user.email" id="email" name="email" required />
+
+              <label for="password">Password</label>
+              <input type="password" placeholder="Password" [(ngModel)]="user.password" id="password" name="password" required />
+
+              <button type="submit">Register</button>
+            </form> -->
+            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+              <label for="name">Name:</label>
+              <input id="name" type="text" formControlName="name" id="fullname" name="fullname" required />
+
+              <input id="email" type="email" formControlName="email" id="email" name="email" required />
+              <label for="email">Email:</label>
+
+              <label for="password">Password:</label>
+              <input id="password" type="password" formControlName="password" id="password" name="password" required />
+
+              <button type="submit">Sign Up</button>
+            
+
+            <p>Already have an account? <a routerLink="/login">Login here</a></p>
+        </form>
+    </div>
+
+</body>
+</html>

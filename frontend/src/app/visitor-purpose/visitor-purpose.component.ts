@@ -12,6 +12,7 @@ export class VisitorPurposeComponent implements OnInit {
   email: string | null = '';
   form = {
     name: '',
+    email: '',
     purpose: '',
     block: '',
     flatNo: ''
@@ -35,6 +36,7 @@ export class VisitorPurposeComponent implements OnInit {
         (data) => {
           this.name = data.name;
           this.form.name = data.name;
+          this.form.email = data.email;
         },
         (error) => {
           console.error('Failed to fetch visitor details:', error);

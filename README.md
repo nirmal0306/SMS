@@ -143,3 +143,14 @@ Photo is compared with one stored in the DB.
 If matched, visitor is allowed to log in.
 
 ---
+
+# 📩 Contact
+If you have any questions, suggestions, or feedback, feel free to reach out.
+
+📛 Developed & Maintained by:
+
+- 📧 [nirmalbarot067@gmail.com](mailto:nirmalbarot067@gmail.com)  
+- 🌐 [GitHub](https://github.com/nirmal0306)  
+- [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nirmal-barot-0b4356254/)
+
+---
